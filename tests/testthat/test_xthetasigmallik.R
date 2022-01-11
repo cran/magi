@@ -43,7 +43,8 @@ curCovR <- calCov(phiTest[,2], r, signr, kerneltype = "generalMatern")
 curCovR$tvecCovInput = fn.sim$time
 
 testthat::test_that("xthetasigmallik differs to xthetallik and loglikOrig by constant fixing phi sigma", {
-  
+  skip_on_cran()
+
   realDiff <- sapply(1:40, function(dummy){ 
     xlatentTest <- data.matrix(fn.true[seq(1,nrow(fn.true), length=nobs),1:2]) * rexp(length(fn.true[,1:2]))
     thetaTest <- pram.true$abc * rexp(length(pram.true$abc))
@@ -243,9 +244,9 @@ testthat::test_that("xthetasigmallik with band approx or mean component", {
                             useBand = useBand,
                             useMean = useMean)
       ))
-  
-  expect_true(all(sapply(outlist, function(x) x$value) == outlist[[1]]$value))
-  expect_true(all(sapply(outlist, function(x) x$grad[,1]) == outlist[[1]]$grad[,1]))
+
+  expect_true(all(abs(sapply(outlist, function(x) x$value) - outlist[[1]]$value) < 1e-3))
+  expect_true(all(abs(sapply(outlist, function(x) x$grad[,1]) - outlist[[1]]$grad[,1]) < 1e-3))
 })
 
 
