@@ -1,4 +1,4 @@
-c3ad9323f74679065f0e51079ca2a5ea *DESCRIPTION
+5823ce8c0564d0726ff5af95f33ecff2 *DESCRIPTION
 8b93b4a07012232fa7df518d147fc319 *LICENSE
 1f75adc0c423370e8f02c7d74b8c5113 *NAMESPACE
 7a12c9ef126c76d4837ad6f2db3b9c10 *R/RcppExports.R
@@ -18,7 +18,7 @@ ddec9e5334ee599b10640b89e0e258bf *R/wrapper.R
 27cbab2cdd12598f3aa276b33816e69b *build/vignette.rds
 28101911c3d256c210da2bc4655877d8 *inst/doc/magi-vignette.R
 ebb110813db4070d648640217c0de037 *inst/doc/magi-vignette.Rmd
-c3ab8023a411e1b3866756408a2c7475 *inst/doc/magi-vignette.html
+db7402837ccd023ee6c561195d46f422 *inst/doc/magi-vignette.html
 8e4f3b1c41f927568d581e8f5bcdd807 *inst/include/magi.h
 d2f467d8f5bea3a4ad2cbe390ac76d4a *inst/testdata/FN.csv
 8a49f1130a740ddb5d38d94531a28c3c *inst/testdata/data_band.txt
@@ -76,7 +76,7 @@ c7142287d1e6b0fd3713d7744afbd182 *tests/testthat/test_dynamicalModel.R
 29c3df62ac957b8ba3e01ef25fdc5c23 *tests/testthat/test_gpcovPassByRef.R
 611611f7aa2c754fdcd7cbe3e248485b *tests/testthat/test_hes1xthetaphisigmallik.R
 396e6ec23607f70a51712df9b5742b9b *tests/testthat/test_hmc.R
-57e34471fa9a74d60007c5ffa7569126 *tests/testthat/test_kernel.R
+6d3e6c03cdcbf9a4e15c116b368353e6 *tests/testthat/test_kernel.R
 0591c0788211a6133e2dc624991ce6f0 *tests/testthat/test_kernelCpp.R
 daddc17754cd91872e4f4e0590785452 *tests/testthat/test_loglikR.R
 acea962d7a0bf5befda47ff3e37e5274 *tests/testthat/test_main.R
@@ -84,7 +84,7 @@ acea962d7a0bf5befda47ff3e37e5274 *tests/testthat/test_main.R
 6baf002092b0004eef94b71baeba98b0 *tests/testthat/test_optimizePhi.R
 90a8306cc1385cfa1a8dad5f16538671 *tests/testthat/test_paralleltempering.R
 4b45c56ecb4e2e13afb95debea24e05e *tests/testthat/test_phillikwithxdotx.R
-a4bee54ad10084148b79e4324491886b *tests/testthat/test_phisigllikC.R
+8610d5620b23f5e16d24a6e8db97b379 *tests/testthat/test_phisigllikC.R
 e2a9c0a457d68863a9c652998d520e88 *tests/testthat/test_phisigloocv.R
 6ef202bca34ffe6680d5633ba32dfd75 *tests/testthat/test_rcppTranslation.R
 883cbb54bf5adddd5ac0662980746733 *tests/testthat/test_xthesamplerNA.R
