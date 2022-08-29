@@ -28,24 +28,6 @@ xthetaphisigmallikRcpp <- function(xlatent, theta, phi, sigma, yobs, xtimes, mod
     .Call('_magi_xthetaphisigmallikRcpp', PACKAGE = 'magi', xlatent, theta, phi, sigma, yobs, xtimes, modelName)
 }
 
-#' R wrapper for xthetaphi1sigmallik
-#' the phi1 can be sampled together without hurting computational speed because the kernel matrix is scaled with phi1,
-#'     so we don't need to re-calculate the inverse. This is the function to calculate the log posterior including phi1.
-#' not used in the final method because phi1 sample is not stable.
-#' @noRd
-xthetaphi1sigmallikRcpp <- function(xlatent, theta, phi1, sigma, yobs, covAllDimInput, priorTemperatureInput = 1.0, useBand = FALSE, useMean = FALSE, modelName = "FN") {
-    .Call('_magi_xthetaphi1sigmallikRcpp', PACKAGE = 'magi', xlatent, theta, phi1, sigma, yobs, covAllDimInput, priorTemperatureInput, useBand, useMean, modelName)
-}
-
-#' sample from GP ODE for latent x, theta, sigma, and phi1
-#' the phi1 can be sampled together without hurting computational speed because the kernel matrix is scaled with phi1,
-#'     so we don't need to re-calculate the inverse.
-#' not used in the final method because phi1 sample is not stable.
-#' @noRd
-xthetaphi1sigmaSample <- function(yobs, covList, phi1Init, sigmaInit, xthetaInit, step, nsteps = 1L, traj = FALSE, loglikflag = "usual", priorTemperatureInput = 1.0, modelName = "FN") {
-    .Call('_magi_xthetaphi1sigmaSample', PACKAGE = 'magi', yobs, covList, phi1Init, sigmaInit, xthetaInit, step, nsteps, traj, loglikflag, priorTemperatureInput, modelName)
-}
-
 #' R wrapper for basic_hmcC for normal distribution
 #' @noRd
 hmcNormal <- function(initial, step, lb, ub, nsteps = 1L, traj = FALSE) {
@@ -130,20 +112,6 @@ phisigllikC <- function(phisig, yobs, dist, kernel = "matern") {
     .Call('_magi_phisigllikC', PACKAGE = 'magi', phisig, yobs, dist, kernel)
 }
 
-#' R wrapper for phisigllik
-#' phi sigma leave-one-out-cross-validation log-likelihood for setting hyper-paramters. This idea is not used in the final method
-#' @noRd
-phisigloocvllikC <- function(phisig, yobs, dist, kernel = "matern") {
-    .Call('_magi_phisigloocvllikC', PACKAGE = 'magi', phisig, yobs, dist, kernel)
-}
-
-#' R wrapper for phisigloocvmse
-#' phi sigma leave-one-out-cross-validation mean-squared-error for setting hyper-paramters. This idea is not used in the final method
-#' @noRd
-phisigloocvmseC <- function(phisig, yobs, dist, kernel = "matern") {
-    .Call('_magi_phisigloocvmseC', PACKAGE = 'magi', phisig, yobs, dist, kernel)
-}
-
 #' sample from GP marginal likelihood for phi and sigma
 #' Internal function for debugging purpose
 #' @noRd
@@ -165,15 +133,6 @@ generalMaternCovRcpp <- function(phi, distSigned, complexity = 3L) {
 #' @noRd
 xthetaSample <- function(yobs, covList, sigmaInput, initial, step, nsteps = 1L, traj = FALSE, loglikflag = "usual", overallTemperature = 1, priorTemperatureInput = 1.0, modelName = "FN") {
     .Call('_magi_xthetaSample', PACKAGE = 'magi', yobs, covList, sigmaInput, initial, step, nsteps, traj, loglikflag, overallTemperature, priorTemperatureInput, modelName)
-}
-
-#' parallel tempered version of hmc for xtheta sample
-#'
-#' not used in the final method, in final method, only one temperature with heating is needed
-#'
-#' @noRd
-parallel_temper_hmc_xtheta <- function(yobs, covVr, covRr, sigmaInput, temperature, alpha0, initial, step, nsteps = 1L, niter = 1e4L) {
-    .Call('_magi_parallel_temper_hmc_xtheta', PACKAGE = 'magi', yobs, covVr, covRr, sigmaInput, temperature, alpha0, initial, step, nsteps, niter)
 }
 
 #' R wrapper for xthetallik
@@ -254,23 +213,23 @@ xthetasigmallikRcpp <- function(xlatent, theta, sigma, yobs, covAllDimInput, pri
 #' 
 #' @examples
 #' # Trajectories from the Fitzhugh-Nagumo equations
-#' tvec <- seq(0,20,2)
+#' tvec <- seq(0, 20, 2)
 #' Vtrue <- c(-1, 1.91, 1.38, -1.32, -1.5, 1.73, 1.66, 0.89, -1.82, -0.93, 1.89)
-#' Rtrue <- c(1, 0.33, -0.62, -0.82, 0.5, 0.94, -0.22, -0.9, -0.08, 0.95,  0.3)
+#' Rtrue <- c(1, 0.33, -0.62, -0.82, 0.5, 0.94, -0.22, -0.9, -0.08, 0.95, 0.3)
 #' 
 #' # Noisy observations
 #' Vobs <- Vtrue + rnorm(length(tvec), sd = 0.05)
 #' Robs <- Rtrue + rnorm(length(tvec), sd = 0.1)
 #' 
 #' # Prepare distance matrix for covariance kernel calculation
-#' foo <- outer(tvec, t(tvec),'-')[,1,]
+#' foo <- outer(tvec, t(tvec), '-')[, 1, ]
 #' r <- abs(foo)
 #' r2 <- r^2
 #' signr <- -sign(foo)
 #'   
 #' # Choose some hyperparameter values to illustrate
-#' rphi=c(0.95, 3.27)
-#' vphi=c(1.98, 1.12)
+#' rphi <- c(0.95, 3.27)
+#' vphi <- c(1.98, 1.12)
 #' phiTest <- cbind(vphi, rphi)
 #' 
 #' # Covariance computations
@@ -281,55 +240,13 @@ xthetasigmallikRcpp <- function(xlatent, theta, sigma, yobs, covAllDimInput, pri
 #' yInput <- data.matrix(cbind(Vobs, Robs))
 #' xlatentTest <- data.matrix(cbind(Vtrue, Rtrue))
 #' 
-#' # ODE system for Fitzhugh-Nagumo equations
-#' fnmodelODE <- function(theta,x,t) {
-#'   V <- x[,1]
-#'   R <- x[,2]
-#'
-#'   result <- array(0, c(nrow(x),ncol(x)))
-#'   result[,1] = theta[3] * (V - V^3 / 3.0 + R)
-#'   result[,2] = -1.0/theta[3] * ( V - theta[1] + theta[2] * R)
-#'   
-#'   result
-#' }
-#' 
-#' # Gradient with respect to system components
-#' fnmodelDx <- function(theta,x,t) {
-#'   resultDx <- array(0, c(nrow(x), ncol(x), ncol(x)))
-#'   V = x[,1]
-#'   
-#'   resultDx[,1,1] = theta[3] * (1 - V^2)
-#'   resultDx[,2,1] = theta[3]
-#'   
-#'   resultDx[,1,2] = (-1.0 / theta[3])
-#'   resultDx[,2,2] = ( -1.0*theta[2]/theta[3] )
-#'   
-#'   resultDx
-#' }
-#' 
-#' # Gradient with respect to parameters theta
-#' fnmodelDtheta <- function(theta,x,t) {
-#'   resultDtheta <- array(0, c(nrow(x), length(theta), ncol(x)))
-#'   
-#'   V = x[,1]
-#'   R = x[,2]
-#'   
-#'   resultDtheta[,3,1] = V - V^3 / 3.0 + R
-#'   
-#'   resultDtheta[,1,2] =  1.0 / theta[3] 
-#'   resultDtheta[,2,2] = -R / theta[3]
-#'   resultDtheta[,3,2] = 1.0/(theta[3]^2) * ( V - theta[1] + theta[2] * R)
-#'   
-#'   resultDtheta
-#' }
-#'
-#' # Create odeModel list 
+#' # Create odeModel list for FN equations
 #' fnmodel <- list(
-#'   fOde=fnmodelODE,
-#'   fOdeDx=fnmodelDx,
-#'   fOdeDtheta=fnmodelDtheta,
-#'   thetaLowerBound=c(0,0,0),
-#'   thetaUpperBound=c(Inf,Inf,Inf)
+#'   fOde = fnmodelODE,
+#'   fOdeDx = fnmodelDx,
+#'   fOdeDtheta = fnmodelDtheta,
+#'   thetaLowerBound = c(0, 0, 0),
+#'   thetaUpperBound = c(Inf, Inf, Inf)
 #' )
 #' 
 #' MagiPosterior(yInput, xlatentTest, theta = c(0.2, 0.2, 3), sigma = c(0.05, 0.1),
@@ -346,94 +263,6 @@ MagiPosterior <- function(y, xlatent, theta, sigma, covAllDimInput, odeModel, pr
 #' @noRd
 xthetasigmaSample <- function(yobs, covList, sigmaInit, xthetaInit, step, nsteps = 1L, traj = FALSE, loglikflag = "usual", priorTemperatureInput = 1.0, modelName = "FN") {
     .Call('_magi_xthetasigmaSample', PACKAGE = 'magi', yobs, covList, sigmaInit, xthetaInit, step, nsteps, traj, loglikflag, priorTemperatureInput, modelName)
-}
-
-solveMagiRcpp <- function(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose) {
-    .Call('_magi_solveMagiRcpp', PACKAGE = 'magi', yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose)
-}
-
-fnmodelODE <- function(theta, x, tvec) {
-    .Call('_magi_fnmodelODE', PACKAGE = 'magi', theta, x, tvec)
-}
-
-fnmodelDx <- function(theta, x, tvec) {
-    .Call('_magi_fnmodelDx', PACKAGE = 'magi', theta, x, tvec)
-}
-
-fnmodelDtheta <- function(theta, x, tvec) {
-    .Call('_magi_fnmodelDtheta', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1modelODE <- function(theta, x, tvec) {
-    .Call('_magi_hes1modelODE', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1modelDx <- function(theta, x, tvec) {
-    .Call('_magi_hes1modelDx', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1modelDtheta <- function(theta, x, tvec) {
-    .Call('_magi_hes1modelDtheta', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelODE <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelODE', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDx <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDx', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDtheta <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDtheta', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelODEfixg <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelODEfixg', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDxfixg <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDxfixg', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDthetafixg <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDthetafixg', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelODEfixf <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelODEfixf', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDxfixf <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDxfixf', PACKAGE = 'magi', theta, x, tvec)
-}
-
-hes1logmodelDthetafixf <- function(theta, x, tvec) {
-    .Call('_magi_hes1logmodelDthetafixf', PACKAGE = 'magi', theta, x, tvec)
-}
-
-HIVmodelODE <- function(theta, x, tvec) {
-    .Call('_magi_HIVmodelODE', PACKAGE = 'magi', theta, x, tvec)
-}
-
-HIVmodelDx <- function(theta, x, tvec) {
-    .Call('_magi_HIVmodelDx', PACKAGE = 'magi', theta, x, tvec)
-}
-
-HIVmodelDtheta <- function(theta, x, tvec) {
-    .Call('_magi_HIVmodelDtheta', PACKAGE = 'magi', theta, x, tvec)
-}
-
-ptransmodelODE <- function(theta, x, tvec) {
-    .Call('_magi_ptransmodelODE', PACKAGE = 'magi', theta, x, tvec)
-}
-
-ptransmodelDx <- function(theta, x, tvec) {
-    .Call('_magi_ptransmodelDx', PACKAGE = 'magi', theta, x, tvec)
-}
-
-ptransmodelDtheta <- function(theta, x, tvec) {
-    .Call('_magi_ptransmodelDtheta', PACKAGE = 'magi', theta, x, tvec)
 }
 
 calcFrequencyBasedPrior <- function(x) {
@@ -454,6 +283,10 @@ optimizeThetaInit <- function(yobsInput, fOdeModelInput, covAllDimensionsInput, 
 
 optimizePhi <- function(yobsInput, tvecInput, fOdeModelInput, sigmaAllDimensionsInput, priorTemperatureInput, xInitInput, thetaInitInput, phiInitInput, missingComponentDim) {
     .Call('_magi_optimizePhi', PACKAGE = 'magi', yobsInput, tvecInput, fOdeModelInput, sigmaAllDimensionsInput, priorTemperatureInput, xInitInput, thetaInitInput, phiInitInput, missingComponentDim)
+}
+
+solveMagiRcpp <- function(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose) {
+    .Call('_magi_solveMagiRcpp', PACKAGE = 'magi', yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose)
 }
 
 #' basic_hmcC
@@ -512,14 +345,6 @@ bandTest <- function(filename = "data_band.txt") {
     .Call('_magi_bandTest', PACKAGE = 'magi', filename)
 }
 
-paralleltemperingTest1 <- function() {
-    .Call('_magi_paralleltemperingTest1', PACKAGE = 'magi')
-}
-
-paralleltemperingTest2 <- function() {
-    .Call('_magi_paralleltemperingTest2', PACKAGE = 'magi')
-}
-
 #' matern variance covariance matrix with derivatives
 #' 
 #' @param phi         the parameter of (sigma_c_sq, alpha)
@@ -542,22 +367,6 @@ NULL
 NULL
 
 #' log likelihood for Gaussian Process marginal likelihood with Matern kernel
-#' 
-#' @param phisig      the parameter phi and sigma
-#' @param yobs        observed data
-NULL
-
-#' leave one out cross validation for Gaussian Process fitting with various kernel
-#' 
-#' loss function is predictive log likelihood
-#' 
-#' @param phisig      the parameter phi and sigma
-#' @param yobs        observed data
-NULL
-
-#' leave one out cross validation for Gaussian Process fitting with various kernel
-#' 
-#' loss function is predictive log likelihood
 #' 
 #' @param phisig      the parameter phi and sigma
 #' @param yobs        observed data

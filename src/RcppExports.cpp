@@ -84,47 +84,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// xthetaphi1sigmallikRcpp
-Rcpp::List xthetaphi1sigmallikRcpp(const arma::mat& xlatent, const arma::vec& theta, const arma::vec& phi1, const arma::vec& sigma, const arma::mat& yobs, const Rcpp::List& covAllDimInput, const Rcpp::NumericVector& priorTemperatureInput, const bool useBand, const bool useMean, const std::string modelName);
-RcppExport SEXP _magi_xthetaphi1sigmallikRcpp(SEXP xlatentSEXP, SEXP thetaSEXP, SEXP phi1SEXP, SEXP sigmaSEXP, SEXP yobsSEXP, SEXP covAllDimInputSEXP, SEXP priorTemperatureInputSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP modelNameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type xlatent(xlatentSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type phi1(phi1SEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type sigma(sigmaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type yobs(yobsSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::List& >::type covAllDimInput(covAllDimInputSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type priorTemperatureInput(priorTemperatureInputSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useBand(useBandSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useMean(useMeanSEXP);
-    Rcpp::traits::input_parameter< const std::string >::type modelName(modelNameSEXP);
-    rcpp_result_gen = Rcpp::wrap(xthetaphi1sigmallikRcpp(xlatent, theta, phi1, sigma, yobs, covAllDimInput, priorTemperatureInput, useBand, useMean, modelName));
-    return rcpp_result_gen;
-END_RCPP
-}
-// xthetaphi1sigmaSample
-Rcpp::List xthetaphi1sigmaSample(const arma::mat& yobs, const Rcpp::List& covList, const arma::vec& phi1Init, const arma::vec& sigmaInit, const arma::vec& xthetaInit, const arma::vec& step, const int nsteps, const bool traj, const std::string loglikflag, const Rcpp::NumericVector& priorTemperatureInput, const std::string modelName);
-RcppExport SEXP _magi_xthetaphi1sigmaSample(SEXP yobsSEXP, SEXP covListSEXP, SEXP phi1InitSEXP, SEXP sigmaInitSEXP, SEXP xthetaInitSEXP, SEXP stepSEXP, SEXP nstepsSEXP, SEXP trajSEXP, SEXP loglikflagSEXP, SEXP priorTemperatureInputSEXP, SEXP modelNameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type yobs(yobsSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::List& >::type covList(covListSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type phi1Init(phi1InitSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type sigmaInit(sigmaInitSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type xthetaInit(xthetaInitSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type step(stepSEXP);
-    Rcpp::traits::input_parameter< const int >::type nsteps(nstepsSEXP);
-    Rcpp::traits::input_parameter< const bool >::type traj(trajSEXP);
-    Rcpp::traits::input_parameter< const std::string >::type loglikflag(loglikflagSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type priorTemperatureInput(priorTemperatureInputSEXP);
-    Rcpp::traits::input_parameter< const std::string >::type modelName(modelNameSEXP);
-    rcpp_result_gen = Rcpp::wrap(xthetaphi1sigmaSample(yobs, covList, phi1Init, sigmaInit, xthetaInit, step, nsteps, traj, loglikflag, priorTemperatureInput, modelName));
-    return rcpp_result_gen;
-END_RCPP
-}
 // hmcNormal
 Rcpp::List hmcNormal(arma::vec initial, arma::vec step, arma::vec lb, arma::vec ub, int nsteps, bool traj);
 RcppExport SEXP _magi_hmcNormal(SEXP initialSEXP, SEXP stepSEXP, SEXP lbSEXP, SEXP ubSEXP, SEXP nstepsSEXP, SEXP trajSEXP) {
@@ -312,34 +271,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// phisigloocvllikC
-Rcpp::List phisigloocvllikC(const arma::vec& phisig, const arma::mat& yobs, const arma::mat& dist, std::string kernel);
-RcppExport SEXP _magi_phisigloocvllikC(SEXP phisigSEXP, SEXP yobsSEXP, SEXP distSEXP, SEXP kernelSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type phisig(phisigSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type yobs(yobsSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< std::string >::type kernel(kernelSEXP);
-    rcpp_result_gen = Rcpp::wrap(phisigloocvllikC(phisig, yobs, dist, kernel));
-    return rcpp_result_gen;
-END_RCPP
-}
-// phisigloocvmseC
-Rcpp::List phisigloocvmseC(const arma::vec& phisig, const arma::mat& yobs, const arma::mat& dist, std::string kernel);
-RcppExport SEXP _magi_phisigloocvmseC(SEXP phisigSEXP, SEXP yobsSEXP, SEXP distSEXP, SEXP kernelSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type phisig(phisigSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type yobs(yobsSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< std::string >::type kernel(kernelSEXP);
-    rcpp_result_gen = Rcpp::wrap(phisigloocvmseC(phisig, yobs, dist, kernel));
-    return rcpp_result_gen;
-END_RCPP
-}
 // phisigSample
 Rcpp::List phisigSample(const arma::mat& yobs, const arma::mat& dist, const arma::vec& initial, const arma::vec& step, int nsteps, bool traj, std::string kernel);
 RcppExport SEXP _magi_phisigSample(SEXP yobsSEXP, SEXP distSEXP, SEXP initialSEXP, SEXP stepSEXP, SEXP nstepsSEXP, SEXP trajSEXP, SEXP kernelSEXP) {
@@ -388,26 +319,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type priorTemperatureInput(priorTemperatureInputSEXP);
     Rcpp::traits::input_parameter< const std::string >::type modelName(modelNameSEXP);
     rcpp_result_gen = Rcpp::wrap(xthetaSample(yobs, covList, sigmaInput, initial, step, nsteps, traj, loglikflag, overallTemperature, priorTemperatureInput, modelName));
-    return rcpp_result_gen;
-END_RCPP
-}
-// parallel_temper_hmc_xtheta
-arma::cube parallel_temper_hmc_xtheta(const arma::mat& yobs, const Rcpp::List& covVr, const Rcpp::List& covRr, const arma::vec& sigmaInput, const arma::vec& temperature, const double& alpha0, const arma::vec& initial, const arma::vec& step, int nsteps, int niter);
-RcppExport SEXP _magi_parallel_temper_hmc_xtheta(SEXP yobsSEXP, SEXP covVrSEXP, SEXP covRrSEXP, SEXP sigmaInputSEXP, SEXP temperatureSEXP, SEXP alpha0SEXP, SEXP initialSEXP, SEXP stepSEXP, SEXP nstepsSEXP, SEXP niterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type yobs(yobsSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::List& >::type covVr(covVrSEXP);
-    Rcpp::traits::input_parameter< const Rcpp::List& >::type covRr(covRrSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type sigmaInput(sigmaInputSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type temperature(temperatureSEXP);
-    Rcpp::traits::input_parameter< const double& >::type alpha0(alpha0SEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type initial(initialSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type step(stepSEXP);
-    Rcpp::traits::input_parameter< int >::type nsteps(nstepsSEXP);
-    Rcpp::traits::input_parameter< int >::type niter(niterSEXP);
-    rcpp_result_gen = Rcpp::wrap(parallel_temper_hmc_xtheta(yobs, covVr, covRr, sigmaInput, temperature, alpha0, initial, step, nsteps, niter));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -558,314 +469,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// solveMagiRcpp
-Rcpp::List solveMagiRcpp(const arma::mat& yFull, const List& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, const std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const double stepSizeFactorHmc, const int nEpoch, const int bandSize, const bool useFrequencyBasedPrior, const bool useBand, const bool useMean, const bool useScalerSigma, const bool useFixedSigma, const bool verbose);
-RcppExport SEXP _magi_solveMagiRcpp(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type yFull(yFullSEXP);
-    Rcpp::traits::input_parameter< const List& >::type odeModel(odeModelSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvecFull(tvecFullSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type sigmaExogenous(sigmaExogenousSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type phiExogenous(phiExogenousSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type xInitExogenous(xInitExogenousSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type thetaInitExogenous(thetaInitExogenousSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type muExogenous(muExogenousSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type dotmuExogenous(dotmuExogenousSEXP);
-    Rcpp::traits::input_parameter< const double >::type priorTemperatureLevel(priorTemperatureLevelSEXP);
-    Rcpp::traits::input_parameter< const double >::type priorTemperatureDeriv(priorTemperatureDerivSEXP);
-    Rcpp::traits::input_parameter< const double >::type priorTemperatureObs(priorTemperatureObsSEXP);
-    Rcpp::traits::input_parameter< const std::string >::type kernel(kernelSEXP);
-    Rcpp::traits::input_parameter< const int >::type nstepsHmc(nstepsHmcSEXP);
-    Rcpp::traits::input_parameter< const double >::type burninRatioHmc(burninRatioHmcSEXP);
-    Rcpp::traits::input_parameter< const unsigned int >::type niterHmc(niterHmcSEXP);
-    Rcpp::traits::input_parameter< const double >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
-    Rcpp::traits::input_parameter< const int >::type nEpoch(nEpochSEXP);
-    Rcpp::traits::input_parameter< const int >::type bandSize(bandSizeSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useFrequencyBasedPrior(useFrequencyBasedPriorSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useBand(useBandSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useMean(useMeanSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useScalerSigma(useScalerSigmaSEXP);
-    Rcpp::traits::input_parameter< const bool >::type useFixedSigma(useFixedSigmaSEXP);
-    Rcpp::traits::input_parameter< const bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(solveMagiRcpp(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fnmodelODE
-arma::mat fnmodelODE(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_fnmodelODE(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(fnmodelODE(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fnmodelDx
-arma::cube fnmodelDx(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_fnmodelDx(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(fnmodelDx(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fnmodelDtheta
-arma::cube fnmodelDtheta(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_fnmodelDtheta(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(fnmodelDtheta(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1modelODE
-arma::mat hes1modelODE(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1modelODE(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1modelODE(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1modelDx
-arma::cube hes1modelDx(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1modelDx(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1modelDx(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1modelDtheta
-arma::cube hes1modelDtheta(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1modelDtheta(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1modelDtheta(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelODE
-arma::mat hes1logmodelODE(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelODE(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelODE(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDx
-arma::cube hes1logmodelDx(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDx(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDx(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDtheta
-arma::cube hes1logmodelDtheta(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDtheta(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDtheta(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelODEfixg
-arma::mat hes1logmodelODEfixg(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelODEfixg(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelODEfixg(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDxfixg
-arma::cube hes1logmodelDxfixg(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDxfixg(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDxfixg(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDthetafixg
-arma::cube hes1logmodelDthetafixg(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDthetafixg(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDthetafixg(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelODEfixf
-arma::mat hes1logmodelODEfixf(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelODEfixf(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelODEfixf(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDxfixf
-arma::cube hes1logmodelDxfixf(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDxfixf(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDxfixf(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// hes1logmodelDthetafixf
-arma::cube hes1logmodelDthetafixf(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_hes1logmodelDthetafixf(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(hes1logmodelDthetafixf(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// HIVmodelODE
-arma::mat HIVmodelODE(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_HIVmodelODE(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(HIVmodelODE(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// HIVmodelDx
-arma::cube HIVmodelDx(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_HIVmodelDx(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(HIVmodelDx(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// HIVmodelDtheta
-arma::cube HIVmodelDtheta(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_HIVmodelDtheta(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(HIVmodelDtheta(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// ptransmodelODE
-arma::mat ptransmodelODE(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_ptransmodelODE(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(ptransmodelODE(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// ptransmodelDx
-arma::cube ptransmodelDx(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_ptransmodelDx(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(ptransmodelDx(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
-// ptransmodelDtheta
-arma::cube ptransmodelDtheta(const arma::vec& theta, const arma::mat& x, const arma::vec& tvec);
-RcppExport SEXP _magi_ptransmodelDtheta(SEXP thetaSEXP, SEXP xSEXP, SEXP tvecSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type tvec(tvecSEXP);
-    rcpp_result_gen = Rcpp::wrap(ptransmodelDtheta(theta, x, tvec));
-    return rcpp_result_gen;
-END_RCPP
-}
 // calcFrequencyBasedPrior
 arma::vec calcFrequencyBasedPrior(const arma::vec& x);
 RcppExport SEXP _magi_calcFrequencyBasedPrior(SEXP xSEXP) {
@@ -945,6 +548,41 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// solveMagiRcpp
+Rcpp::List solveMagiRcpp(const arma::mat& yFull, const List& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, const std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const double stepSizeFactorHmc, const int nEpoch, const int bandSize, const bool useFrequencyBasedPrior, const bool useBand, const bool useMean, const bool useScalerSigma, const bool useFixedSigma, const bool verbose);
+RcppExport SEXP _magi_solveMagiRcpp(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type yFull(yFullSEXP);
+    Rcpp::traits::input_parameter< const List& >::type odeModel(odeModelSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type tvecFull(tvecFullSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type sigmaExogenous(sigmaExogenousSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type phiExogenous(phiExogenousSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type xInitExogenous(xInitExogenousSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type thetaInitExogenous(thetaInitExogenousSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type muExogenous(muExogenousSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type dotmuExogenous(dotmuExogenousSEXP);
+    Rcpp::traits::input_parameter< const double >::type priorTemperatureLevel(priorTemperatureLevelSEXP);
+    Rcpp::traits::input_parameter< const double >::type priorTemperatureDeriv(priorTemperatureDerivSEXP);
+    Rcpp::traits::input_parameter< const double >::type priorTemperatureObs(priorTemperatureObsSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< const int >::type nstepsHmc(nstepsHmcSEXP);
+    Rcpp::traits::input_parameter< const double >::type burninRatioHmc(burninRatioHmcSEXP);
+    Rcpp::traits::input_parameter< const unsigned int >::type niterHmc(niterHmcSEXP);
+    Rcpp::traits::input_parameter< const double >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
+    Rcpp::traits::input_parameter< const int >::type nEpoch(nEpochSEXP);
+    Rcpp::traits::input_parameter< const int >::type bandSize(bandSizeSEXP);
+    Rcpp::traits::input_parameter< const bool >::type useFrequencyBasedPrior(useFrequencyBasedPriorSEXP);
+    Rcpp::traits::input_parameter< const bool >::type useBand(useBandSEXP);
+    Rcpp::traits::input_parameter< const bool >::type useMean(useMeanSEXP);
+    Rcpp::traits::input_parameter< const bool >::type useScalerSigma(useScalerSigmaSEXP);
+    Rcpp::traits::input_parameter< const bool >::type useFixedSigma(useFixedSigmaSEXP);
+    Rcpp::traits::input_parameter< const bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(solveMagiRcpp(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
 // hmcTest
 int hmcTest();
 RcppExport SEXP _magi_hmcTest() {
@@ -966,33 +604,11 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// paralleltemperingTest1
-arma::cube paralleltemperingTest1();
-RcppExport SEXP _magi_paralleltemperingTest1() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(paralleltemperingTest1());
-    return rcpp_result_gen;
-END_RCPP
-}
-// paralleltemperingTest2
-arma::cube paralleltemperingTest2();
-RcppExport SEXP _magi_paralleltemperingTest2() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(paralleltemperingTest2());
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_magi_solveMagi", (DL_FUNC) &_magi_solveMagi, 25},
     {"_magi_xthetaphisigmaSample", (DL_FUNC) &_magi_xthetaphisigmaSample, 10},
     {"_magi_xthetaphisigmallikRcpp", (DL_FUNC) &_magi_xthetaphisigmallikRcpp, 7},
-    {"_magi_xthetaphi1sigmallikRcpp", (DL_FUNC) &_magi_xthetaphi1sigmallikRcpp, 10},
-    {"_magi_xthetaphi1sigmaSample", (DL_FUNC) &_magi_xthetaphi1sigmaSample, 11},
     {"_magi_hmcNormal", (DL_FUNC) &_magi_hmcNormal, 6},
     {"_magi_xthetallik_rescaledC", (DL_FUNC) &_magi_xthetallik_rescaledC, 5},
     {"_magi_xthetallikBandApproxC", (DL_FUNC) &_magi_xthetallikBandApproxC, 5},
@@ -1007,12 +623,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_magi_maternCovTestOutput", (DL_FUNC) &_magi_maternCovTestOutput, 3},
     {"_magi_maternCovTestInput", (DL_FUNC) &_magi_maternCovTestInput, 1},
     {"_magi_phisigllikC", (DL_FUNC) &_magi_phisigllikC, 4},
-    {"_magi_phisigloocvllikC", (DL_FUNC) &_magi_phisigloocvllikC, 4},
-    {"_magi_phisigloocvmseC", (DL_FUNC) &_magi_phisigloocvmseC, 4},
     {"_magi_phisigSample", (DL_FUNC) &_magi_phisigSample, 7},
     {"_magi_generalMaternCovRcpp", (DL_FUNC) &_magi_generalMaternCovRcpp, 3},
     {"_magi_xthetaSample", (DL_FUNC) &_magi_xthetaSample, 11},
-    {"_magi_parallel_temper_hmc_xtheta", (DL_FUNC) &_magi_parallel_temper_hmc_xtheta, 10},
     {"_magi_xthetallikRcpp", (DL_FUNC) &_magi_xthetallikRcpp, 7},
     {"_magi_xthetallikWithmuBandC", (DL_FUNC) &_magi_xthetallikWithmuBandC, 7},
     {"_magi_basic_hmcRcpp", (DL_FUNC) &_magi_basic_hmcRcpp, 7},
@@ -1021,37 +634,14 @@ static const R_CallMethodDef CallEntries[] = {
     {"_magi_xthetasigmallikRcpp", (DL_FUNC) &_magi_xthetasigmallikRcpp, 9},
     {"_magi_MagiPosterior", (DL_FUNC) &_magi_MagiPosterior, 8},
     {"_magi_xthetasigmaSample", (DL_FUNC) &_magi_xthetasigmaSample, 10},
-    {"_magi_solveMagiRcpp", (DL_FUNC) &_magi_solveMagiRcpp, 25},
-    {"_magi_fnmodelODE", (DL_FUNC) &_magi_fnmodelODE, 3},
-    {"_magi_fnmodelDx", (DL_FUNC) &_magi_fnmodelDx, 3},
-    {"_magi_fnmodelDtheta", (DL_FUNC) &_magi_fnmodelDtheta, 3},
-    {"_magi_hes1modelODE", (DL_FUNC) &_magi_hes1modelODE, 3},
-    {"_magi_hes1modelDx", (DL_FUNC) &_magi_hes1modelDx, 3},
-    {"_magi_hes1modelDtheta", (DL_FUNC) &_magi_hes1modelDtheta, 3},
-    {"_magi_hes1logmodelODE", (DL_FUNC) &_magi_hes1logmodelODE, 3},
-    {"_magi_hes1logmodelDx", (DL_FUNC) &_magi_hes1logmodelDx, 3},
-    {"_magi_hes1logmodelDtheta", (DL_FUNC) &_magi_hes1logmodelDtheta, 3},
-    {"_magi_hes1logmodelODEfixg", (DL_FUNC) &_magi_hes1logmodelODEfixg, 3},
-    {"_magi_hes1logmodelDxfixg", (DL_FUNC) &_magi_hes1logmodelDxfixg, 3},
-    {"_magi_hes1logmodelDthetafixg", (DL_FUNC) &_magi_hes1logmodelDthetafixg, 3},
-    {"_magi_hes1logmodelODEfixf", (DL_FUNC) &_magi_hes1logmodelODEfixf, 3},
-    {"_magi_hes1logmodelDxfixf", (DL_FUNC) &_magi_hes1logmodelDxfixf, 3},
-    {"_magi_hes1logmodelDthetafixf", (DL_FUNC) &_magi_hes1logmodelDthetafixf, 3},
-    {"_magi_HIVmodelODE", (DL_FUNC) &_magi_HIVmodelODE, 3},
-    {"_magi_HIVmodelDx", (DL_FUNC) &_magi_HIVmodelDx, 3},
-    {"_magi_HIVmodelDtheta", (DL_FUNC) &_magi_HIVmodelDtheta, 3},
-    {"_magi_ptransmodelODE", (DL_FUNC) &_magi_ptransmodelODE, 3},
-    {"_magi_ptransmodelDx", (DL_FUNC) &_magi_ptransmodelDx, 3},
-    {"_magi_ptransmodelDtheta", (DL_FUNC) &_magi_ptransmodelDtheta, 3},
     {"_magi_calcFrequencyBasedPrior", (DL_FUNC) &_magi_calcFrequencyBasedPrior, 1},
     {"_magi_gpsmooth", (DL_FUNC) &_magi_gpsmooth, 5},
     {"_magi_calcMeanCurve", (DL_FUNC) &_magi_calcMeanCurve, 7},
     {"_magi_optimizeThetaInit", (DL_FUNC) &_magi_optimizeThetaInit, 7},
     {"_magi_optimizePhi", (DL_FUNC) &_magi_optimizePhi, 9},
+    {"_magi_solveMagiRcpp", (DL_FUNC) &_magi_solveMagiRcpp, 25},
     {"_magi_hmcTest", (DL_FUNC) &_magi_hmcTest, 0},
     {"_magi_bandTest", (DL_FUNC) &_magi_bandTest, 1},
-    {"_magi_paralleltemperingTest1", (DL_FUNC) &_magi_paralleltemperingTest1, 0},
-    {"_magi_paralleltemperingTest2", (DL_FUNC) &_magi_paralleltemperingTest2, 0},
     {NULL, NULL, 0}
 };
 

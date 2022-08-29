@@ -91,9 +91,9 @@ If \code{bandsize} is a positive integer, additionally CinvBand, mphiBand, and K
 band matrix approximations to Cinv, mphi, and Kinv with the specified \code{bandsize}.
 }
 \examples{
-foo  <- outer(0:40, t(0:40),'-')[,1,]
+foo  <- outer(0:40, t(0:40), '-')[, 1, ]
 r <- abs(foo)
 signr <- -sign(foo)
-calCov(c(0.2, 2), r, signr, bandsize=20, kerneltype="generalMatern", df=2.01)
+calCov(c(0.2, 2), r, signr, bandsize = 20, kerneltype = "generalMatern", df = 2.01)
 
 }

@@ -238,12 +238,12 @@ arma::vec gpsmooth(const arma::mat & yobsInput,
 
 // [[Rcpp::export]]
 arma::cube calcMeanCurve(const arma::vec & xInput,
-                        const arma::vec & yInput,
-                        const arma::vec & xOutput,
-                        const arma::mat & phiCandidates,
-                        const arma::vec & sigmaCandidates,
-                        const std::string kerneltype = "generalMatern",
-                        const bool useDeriv = false) {
+                         const arma::vec & yInput,
+                         const arma::vec & xOutput,
+                         const arma::mat & phiCandidates,
+                         const arma::vec & sigmaCandidates,
+                         const std::string kerneltype = "generalMatern",
+                         const bool useDeriv = false) {
     if(kerneltype != "generalMatern") Rcpp::Rcerr << "kerneltype other than generalMatern is not supported\n";
 
     const arma::vec & tvec = arma::join_vert(xOutput, xInput);
@@ -404,7 +404,7 @@ public:
     const arma::uvec & missingComponentDim;
     arma::vec lb;
     arma::vec ub;
-    
+
     double operator()(const arma::vec & phiInput, arma::vec & grad) {
         if (arma::any(phiInput < lb)){
             grad.fill(0);
@@ -561,7 +561,7 @@ arma::mat optimizePhi(const arma::mat & yobsInput,
     opt.minimize(objective, phi);
 //    Rcpp::Rcout << "; opt.value() = " << opt.value() << "; opt.par() = " << opt.par().t() << "\n";
     //Rcpp::Rcout << "Diagnostics: opt.fncount() = " << opt.fncount() << "; opt.grcount() = " << opt.grcount() << "; opt.convergence() = " << opt.convergence() << "\n";
-    
+
     if (opt.value() < fx_best){
         fx_best = opt.value();
         phi_argmin_best = opt.par();
@@ -672,14 +672,14 @@ public:
     }
 
     XmissingThetaPhiOptim(const arma::mat & yobsInput,
-             const arma::vec & tvecInput,
-             const OdeSystem & fOdeModelInput,
-             const arma::vec & sigmaAllDimensionsInput,
-             const arma::vec & priorTemperatureInput,
-             const arma::mat & xInitInput,
-             const arma::vec & thetaInitInput,
-             const arma::mat & phiFullInput,
-             const arma::uvec & missingComponentDimInput) :
+                          const arma::vec & tvecInput,
+                          const OdeSystem & fOdeModelInput,
+                          const arma::vec & sigmaAllDimensionsInput,
+                          const arma::vec & priorTemperatureInput,
+                          const arma::mat & xInitInput,
+                          const arma::vec & thetaInitInput,
+                          const arma::mat & phiFullInput,
+                          const arma::uvec & missingComponentDimInput) :
             yobs(yobsInput),
             tvec(tvecInput),
             fOdeModel(fOdeModelInput),

@@ -23,6 +23,6 @@ Marginal log-likelihood and gradient as a function of GP hyper-parameters phi an
 }
 \examples{
 # Suppose phi[1] = 0.5, phi[2] = 3, sigma = 0.1
-gpsmoothllik(c(0.5,3,0.1), rnorm(10), abs(outer(0:9, t(0:9),'-')[,1,]))
+gpsmoothllik(c(0.5, 3, 0.1), rnorm(10), abs(outer(0:9, t(0:9), '-')[, 1, ]))
 
 }
