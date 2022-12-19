@@ -13,8 +13,8 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // solveMagi
-arma::cube solveMagi(const arma::mat& yFull, const OdeSystem& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const double stepSizeFactorHmc, const int nEpoch, const int bandSize, bool useFrequencyBasedPrior, bool useBand, bool useMean, bool useScalerSigma, bool useFixedSigma, bool verbose);
-RcppExport SEXP _magi_solveMagi(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP verboseSEXP) {
+arma::cube solveMagi(const arma::mat& yFull, const OdeSystem& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const arma::vec stepSizeFactorHmc, const int nEpoch, const int bandSize, bool useFrequencyBasedPrior, bool useBand, bool useMean, bool useScalerSigma, bool useFixedSigma, bool skipMissingComponentOptimization, bool positiveSystem, bool verbose);
+RcppExport SEXP _magi_solveMagi(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP skipMissingComponentOptimizationSEXP, SEXP positiveSystemSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type nstepsHmc(nstepsHmcSEXP);
     Rcpp::traits::input_parameter< const double >::type burninRatioHmc(burninRatioHmcSEXP);
     Rcpp::traits::input_parameter< const unsigned int >::type niterHmc(niterHmcSEXP);
-    Rcpp::traits::input_parameter< const double >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
     Rcpp::traits::input_parameter< const int >::type nEpoch(nEpochSEXP);
     Rcpp::traits::input_parameter< const int >::type bandSize(bandSizeSEXP);
     Rcpp::traits::input_parameter< bool >::type useFrequencyBasedPrior(useFrequencyBasedPriorSEXP);
@@ -42,8 +42,10 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type useMean(useMeanSEXP);
     Rcpp::traits::input_parameter< bool >::type useScalerSigma(useScalerSigmaSEXP);
     Rcpp::traits::input_parameter< bool >::type useFixedSigma(useFixedSigmaSEXP);
+    Rcpp::traits::input_parameter< bool >::type skipMissingComponentOptimization(skipMissingComponentOptimizationSEXP);
+    Rcpp::traits::input_parameter< bool >::type positiveSystem(positiveSystemSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(solveMagi(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose));
+    rcpp_result_gen = Rcpp::wrap(solveMagi(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, skipMissingComponentOptimization, positiveSystem, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -374,8 +376,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // chainSamplerRcpp
-Rcpp::List chainSamplerRcpp(const arma::mat& yobs, const Rcpp::List& covAllDimInput, const int nstepsInput, const std::string loglikflagInput, const arma::vec& priorTemperatureInput, const unsigned int sigmaSizeInput, const OdeSystem& modelInput, const unsigned int niterInput, const double burninRatioInput, const arma::vec& xthetasigmaInit, const arma::vec& stepLowInit, bool verbose);
-RcppExport SEXP _magi_chainSamplerRcpp(SEXP yobsSEXP, SEXP covAllDimInputSEXP, SEXP nstepsInputSEXP, SEXP loglikflagInputSEXP, SEXP priorTemperatureInputSEXP, SEXP sigmaSizeInputSEXP, SEXP modelInputSEXP, SEXP niterInputSEXP, SEXP burninRatioInputSEXP, SEXP xthetasigmaInitSEXP, SEXP stepLowInitSEXP, SEXP verboseSEXP) {
+Rcpp::List chainSamplerRcpp(const arma::mat& yobs, const Rcpp::List& covAllDimInput, const int nstepsInput, const std::string loglikflagInput, const arma::vec& priorTemperatureInput, const unsigned int sigmaSizeInput, const OdeSystem& modelInput, const unsigned int niterInput, const double burninRatioInput, const arma::vec& xthetasigmaInit, const arma::vec& stepLowInit, bool positiveSystem, bool verbose);
+RcppExport SEXP _magi_chainSamplerRcpp(SEXP yobsSEXP, SEXP covAllDimInputSEXP, SEXP nstepsInputSEXP, SEXP loglikflagInputSEXP, SEXP priorTemperatureInputSEXP, SEXP sigmaSizeInputSEXP, SEXP modelInputSEXP, SEXP niterInputSEXP, SEXP burninRatioInputSEXP, SEXP xthetasigmaInitSEXP, SEXP stepLowInitSEXP, SEXP positiveSystemSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -390,8 +392,9 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double >::type burninRatioInput(burninRatioInputSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type xthetasigmaInit(xthetasigmaInitSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type stepLowInit(stepLowInitSEXP);
+    Rcpp::traits::input_parameter< bool >::type positiveSystem(positiveSystemSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(chainSamplerRcpp(yobs, covAllDimInput, nstepsInput, loglikflagInput, priorTemperatureInput, sigmaSizeInput, modelInput, niterInput, burninRatioInput, xthetasigmaInit, stepLowInit, verbose));
+    rcpp_result_gen = Rcpp::wrap(chainSamplerRcpp(yobs, covAllDimInput, nstepsInput, loglikflagInput, priorTemperatureInput, sigmaSizeInput, modelInput, niterInput, burninRatioInput, xthetasigmaInit, stepLowInit, positiveSystem, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -549,8 +552,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // solveMagiRcpp
-Rcpp::List solveMagiRcpp(const arma::mat& yFull, const List& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, const std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const double stepSizeFactorHmc, const int nEpoch, const int bandSize, const bool useFrequencyBasedPrior, const bool useBand, const bool useMean, const bool useScalerSigma, const bool useFixedSigma, const bool verbose);
-RcppExport SEXP _magi_solveMagiRcpp(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP verboseSEXP) {
+Rcpp::List solveMagiRcpp(const arma::mat& yFull, const List& odeModel, const arma::vec& tvecFull, const arma::vec& sigmaExogenous, const arma::mat& phiExogenous, const arma::mat& xInitExogenous, const arma::vec& thetaInitExogenous, const arma::mat& muExogenous, const arma::mat& dotmuExogenous, const double priorTemperatureLevel, const double priorTemperatureDeriv, const double priorTemperatureObs, const std::string kernel, const int nstepsHmc, const double burninRatioHmc, const unsigned int niterHmc, const arma::vec stepSizeFactorHmc, const int nEpoch, const int bandSize, const bool useFrequencyBasedPrior, const bool useBand, const bool useMean, const bool useScalerSigma, const bool useFixedSigma, const bool skipMissingComponentOptimization, const bool positiveSystem, const bool verbose);
+RcppExport SEXP _magi_solveMagiRcpp(SEXP yFullSEXP, SEXP odeModelSEXP, SEXP tvecFullSEXP, SEXP sigmaExogenousSEXP, SEXP phiExogenousSEXP, SEXP xInitExogenousSEXP, SEXP thetaInitExogenousSEXP, SEXP muExogenousSEXP, SEXP dotmuExogenousSEXP, SEXP priorTemperatureLevelSEXP, SEXP priorTemperatureDerivSEXP, SEXP priorTemperatureObsSEXP, SEXP kernelSEXP, SEXP nstepsHmcSEXP, SEXP burninRatioHmcSEXP, SEXP niterHmcSEXP, SEXP stepSizeFactorHmcSEXP, SEXP nEpochSEXP, SEXP bandSizeSEXP, SEXP useFrequencyBasedPriorSEXP, SEXP useBandSEXP, SEXP useMeanSEXP, SEXP useScalerSigmaSEXP, SEXP useFixedSigmaSEXP, SEXP skipMissingComponentOptimizationSEXP, SEXP positiveSystemSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -570,7 +573,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type nstepsHmc(nstepsHmcSEXP);
     Rcpp::traits::input_parameter< const double >::type burninRatioHmc(burninRatioHmcSEXP);
     Rcpp::traits::input_parameter< const unsigned int >::type niterHmc(niterHmcSEXP);
-    Rcpp::traits::input_parameter< const double >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type stepSizeFactorHmc(stepSizeFactorHmcSEXP);
     Rcpp::traits::input_parameter< const int >::type nEpoch(nEpochSEXP);
     Rcpp::traits::input_parameter< const int >::type bandSize(bandSizeSEXP);
     Rcpp::traits::input_parameter< const bool >::type useFrequencyBasedPrior(useFrequencyBasedPriorSEXP);
@@ -578,8 +581,10 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const bool >::type useMean(useMeanSEXP);
     Rcpp::traits::input_parameter< const bool >::type useScalerSigma(useScalerSigmaSEXP);
     Rcpp::traits::input_parameter< const bool >::type useFixedSigma(useFixedSigmaSEXP);
+    Rcpp::traits::input_parameter< const bool >::type skipMissingComponentOptimization(skipMissingComponentOptimizationSEXP);
+    Rcpp::traits::input_parameter< const bool >::type positiveSystem(positiveSystemSEXP);
     Rcpp::traits::input_parameter< const bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(solveMagiRcpp(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, verbose));
+    rcpp_result_gen = Rcpp::wrap(solveMagiRcpp(yFull, odeModel, tvecFull, sigmaExogenous, phiExogenous, xInitExogenous, thetaInitExogenous, muExogenous, dotmuExogenous, priorTemperatureLevel, priorTemperatureDeriv, priorTemperatureObs, kernel, nstepsHmc, burninRatioHmc, niterHmc, stepSizeFactorHmc, nEpoch, bandSize, useFrequencyBasedPrior, useBand, useMean, useScalerSigma, useFixedSigma, skipMissingComponentOptimization, positiveSystem, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -606,7 +611,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_magi_solveMagi", (DL_FUNC) &_magi_solveMagi, 25},
+    {"_magi_solveMagi", (DL_FUNC) &_magi_solveMagi, 27},
     {"_magi_xthetaphisigmaSample", (DL_FUNC) &_magi_xthetaphisigmaSample, 10},
     {"_magi_xthetaphisigmallikRcpp", (DL_FUNC) &_magi_xthetaphisigmallikRcpp, 7},
     {"_magi_hmcNormal", (DL_FUNC) &_magi_hmcNormal, 6},
@@ -629,7 +634,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_magi_xthetallikRcpp", (DL_FUNC) &_magi_xthetallikRcpp, 7},
     {"_magi_xthetallikWithmuBandC", (DL_FUNC) &_magi_xthetallikWithmuBandC, 7},
     {"_magi_basic_hmcRcpp", (DL_FUNC) &_magi_basic_hmcRcpp, 7},
-    {"_magi_chainSamplerRcpp", (DL_FUNC) &_magi_chainSamplerRcpp, 12},
+    {"_magi_chainSamplerRcpp", (DL_FUNC) &_magi_chainSamplerRcpp, 13},
     {"_magi_optimizeThetaInitRcpp", (DL_FUNC) &_magi_optimizeThetaInitRcpp, 7},
     {"_magi_xthetasigmallikRcpp", (DL_FUNC) &_magi_xthetasigmallikRcpp, 9},
     {"_magi_MagiPosterior", (DL_FUNC) &_magi_MagiPosterior, 8},
@@ -639,7 +644,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_magi_calcMeanCurve", (DL_FUNC) &_magi_calcMeanCurve, 7},
     {"_magi_optimizeThetaInit", (DL_FUNC) &_magi_optimizeThetaInit, 7},
     {"_magi_optimizePhi", (DL_FUNC) &_magi_optimizePhi, 9},
-    {"_magi_solveMagiRcpp", (DL_FUNC) &_magi_solveMagiRcpp, 25},
+    {"_magi_solveMagiRcpp", (DL_FUNC) &_magi_solveMagiRcpp, 27},
     {"_magi_hmcTest", (DL_FUNC) &_magi_hmcTest, 0},
     {"_magi_bandTest", (DL_FUNC) &_magi_bandTest, 1},
     {NULL, NULL, 0}
