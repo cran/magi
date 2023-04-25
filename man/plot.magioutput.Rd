@@ -2,15 +2,21 @@
 % Please edit documentation in R/visualization.R
 \name{plot.magioutput}
 \alias{plot.magioutput}
-\title{Plot trajectories from \code{magioutput} object}
+\title{Generate plots from \code{magioutput} object}
 \usage{
 \method{plot}{magioutput}(
   x,
+  type = "traj",
   obs = TRUE,
   ci = TRUE,
+  ci.col = "skyblue",
   comp.names,
+  par.names,
+  est = "mean",
   lower = 0.025,
   upper = 0.975,
+  sigma = FALSE,
+  lp = TRUE,
   nplotcol = 3,
   ...
 )
@@ -18,27 +24,46 @@
 \arguments{
 \item{x}{a \code{magioutput} object.}
 
-\item{obs}{logical; if true, points will be added on the plots for the observations.}
+\item{type}{string; the default \code{type = "traj"} plots inferred trajectories, while setting \code{type = "trace"} generates diagnostic traceplots for the MCMC samples of the parameters and log-posterior values.}
 
-\item{ci}{logical; if true, credible bands will be added to the plots.}
+\item{obs}{logical; if true, points will be added on the plots for the observations when \code{type = "traj"}.}
 
-\item{comp.names}{vector of system component names. If provided, should be the same length as the number of system components in \eqn{X}.}
+\item{ci}{logical; if true, credible bands/intervals will be added to the plots.}
 
-\item{lower}{the lower quantile of the credible band, default is 0.025. Only used if \code{ci = TRUE}.}
+\item{ci.col}{string; color to use for credible bands.}
 
-\item{upper}{the upper quantile of the credible band, default is 0.975. Only used if \code{ci = TRUE}.}
+\item{comp.names}{vector of system component names, when \code{type = "traj"}. If provided, should be the same length as the number of system components in \eqn{X}.}
+
+\item{par.names}{vector of parameter names, when \code{type = "trace"}. If provided, should be the same length as the number of parameters in \eqn{\theta}, or the combined length of \eqn{\theta} and \eqn{\sigma} when \code{sigma = TRUE}.}
+
+\item{est}{string specifying the posterior quantity to plot as the estimate. Can be "mean", "median", "mode", or "none". Default is "mean", which plots the posterior mean of the MCMC samples.}
+
+\item{lower}{the lower quantile of the credible band/interval, default is 0.025. Only used if \code{ci = TRUE}.}
+
+\item{upper}{the upper quantile of the credible band/interval, default is 0.975. Only used if \code{ci = TRUE}.}
+
+\item{sigma}{logical; if true, the noise levels \eqn{\sigma} will be included in the traceplots when \code{type = "trace"}.}
+
+\item{lp}{logical; if true, the values of the log-posterior will be included in the traceplots when \code{type = "trace"}.}
 
 \item{nplotcol}{the number of subplots per row.}
 
 \item{...}{additional arguments to \code{plot}.}
 }
 \description{
-Plots the inferred trajectories from the output of \code{MagiSolver}
+Plots inferred system trajectories or diagnostic traceplots from the output of \code{MagiSolver}
 }
 \details{
-Plots inferred trajectories (posterior means) and credible bands from the MCMC samples, one subplot for each system component.
+Plots the inferred system trajectories (when \code{type = "traj"}) or diagnostic traceplots of the parameters and log-posterior (when \code{type = "trace"}) from the MCMC samples.
+By default, the posterior mean is treated as the estimate of the trajectories and parameters (\code{est = "mean"}).
+Alternatives are the posterior median (\code{est = "median"}, taken component-wise) and the posterior mode (\code{est = "mode"}, approximated by the MCMC sample with the highest log-posterior value).
+
+The default \code{type = "traj"} produces plots of the inferred trajectories and credible bands from the MCMC samples, one subplot for each system component.
 By default, \code{lower = 0.025} and \code{upper = 0.975} produces a central 95\% credible band when \code{ci = TRUE}.
 Adding the observed data points (\code{obs = TRUE}) can provide a visual assessment of the inferred trajectories.
+
+Setting \code{type = "trace"} generates diagnostic traceplots for the MCMC samples of the system parameters and the values of the log-posterior, which is a useful tool for informally assessing convergence.
+In this case, the \code{est} and \code{ci} options add horizontal lines to the plots that indicate the estimate (in red) and credible interval (in green) for each parameter.
 }
 \examples{
 # Set up odeModel list for the Fitzhugh-Nagumo equations
@@ -57,6 +82,10 @@ y <- setDiscretization(FNdat, by = 0.25)
 # Create magioutput from a short MagiSolver run (demo only, more iterations needed for convergence)
 result <- MagiSolver(y, fnmodel, control = list(nstepsHmc = 20, niterHmc = 500)) 
 
+# Inferred trajectories
 plot(result, comp.names = c("V", "R"), xlab = "Time", ylab = "Level")
+
+# Parameter trace plots
+plot(result, type = "trace", par.names = c("a", "b", "c", "sigmaV", "sigmaR"), sigma = TRUE)
 
 }

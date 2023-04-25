@@ -28,10 +28,11 @@ Using the core \code{\link{MagiSolver}} function returns a \code{magioutput} obj
 \item{\code{sigma}}{matrix of MCMC samples for the observation noise SDs \eqn{\sigma}, after burn-in.}
 \item{\code{phi}}{matrix of estimated GP hyper-parameters, one column for each system component.}
 \item{\code{lp}}{vector of log-posterior values at each MCMC iteration, after burn-in.}
+\item{\code{y, tvec, odeModel}}{from the inputs to \code{MagiSolver}.}
 } 
 Printing a \code{magioutput} object displays a brief summary of the settings used for the \code{MagiSolver} run.
 The summary method for a \code{magioutput} object prints a table of parameter estimates, see \code{\link{summary.magioutput}} for more details. 
-Plotting a \code{magioutput} object shows the inferred trajectories for each component, see \code{\link{plot.magioutput}} for more details.
+Plotting a \code{magioutput} object by default shows the inferred trajectories for each component, see \code{\link{plot.magioutput}} for more details.
 }
 \examples{
 # Set up odeModel list for the Fitzhugh-Nagumo equations

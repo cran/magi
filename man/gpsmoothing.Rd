@@ -11,7 +11,7 @@ gpsmoothing(yobs, tvec, kerneltype = "generalMatern", sigma = NULL)
 
 \item{tvec}{vector of time points corresponding to observations}
 
-\item{kerneltype}{the covariance kernel, types \code{matern}, \code{compact1}, \code{periodicMatern}, \code{generalMatern} are supported.  See \code{\link{calCov}} for their definitions.}
+\item{kerneltype}{the covariance kernel, types \code{matern}, \code{rbf}, \code{compact1}, \code{periodicMatern}, \code{generalMatern} are supported.  See \code{\link{calCov}} for their definitions.}
 
 \item{sigma}{the noise level (if known). By default, both \code{phi} and \code{sigma} are estimated. If a value for \code{sigma} is supplied, then \code{sigma} is held fixed at the supplied value and only \code{phi} is estimated.}
 }

@@ -8,6 +8,7 @@
   object,
   sigma = FALSE,
   par.names,
+  est = "mean",
   lower = 0.025,
   upper = 0.975,
   digits = 3,
@@ -21,6 +22,8 @@
 
 \item{par.names}{vector of parameter names for the summary table. If provided, should be the same length as the number of parameters in \eqn{\theta}, or the combined length of \eqn{\theta} and \eqn{\sigma} when \code{sigma = TRUE}.}
 
+\item{est}{string specifying the posterior quantity to treat as the estimate. Default is \code{est = "mean"}, which treats the posterior mean as the estimate. Alternatives are the posterior median (\code{est = "median"}, taken component-wise) and the posterior mode (\code{est = "mode"}, approximated by the MCMC sample with the highest log-posterior value).}
+
 \item{lower}{the lower quantile of the credible interval, default is 0.025.}
 
 \item{upper}{the upper quantile of the credible interval, default is 0.975.}
@@ -30,13 +33,13 @@
 \item{...}{additional arguments affecting the summary produced.}
 }
 \value{
-Returns a matrix where rows display the posterior mean, lower credible limit, and upper credible limit of each parameter.
+Returns a matrix where rows display the estimate, lower credible limit, and upper credible limit of each parameter.
 }
 \description{
 Computes a summary table of parameter estimates from the output of \code{MagiSolver}
 }
 \details{
-Computes parameter estimates (posterior means) and credible intervals from the MCMC samples. By default, \code{lower = 0.025} and \code{upper = 0.975} produces a central 95\% credible interval.
+Computes parameter estimates and credible intervals from the MCMC samples. By default, the posterior mean is treated as the parameter estimate, and \code{lower = 0.025} and \code{upper = 0.975} produces a central 95\% credible interval.
 }
 \examples{
 # Set up odeModel list for the Fitzhugh-Nagumo equations

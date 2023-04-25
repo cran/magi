@@ -9,9 +9,9 @@ setDiscretization(dat, level, by)
 \arguments{
 \item{dat}{data matrix. Must include a column with name `time`.}
 
-\item{level}{discretization level (a positive integer). \code{2^level - 1} equally-spaced points will be inserted between existing data points in \code{dat}.}
+\item{level}{discretization level (a positive integer). \code{2^level - 1} equally-spaced time points will be inserted between each row of \code{dat}.}
 
-\item{by}{discretization interval. As an alternative to \code{level}, equally-spaced spaced time points will be inserted with interval \code{by} between successive points.}
+\item{by}{discretization interval. As an alternative to \code{level}, time points will be inserted (as needed) to form an equally-spaced discretization set from the first to last observations of \code{dat}, with interval \code{by} between successive discretization points. This can be useful when the time points in \code{dat} are unevenly spaced.}
 }
 \value{
 Returns a data matrix with the same columns as \code{dat}, with rows added for the inserted discretization time points.

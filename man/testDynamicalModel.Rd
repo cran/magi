@@ -7,7 +7,7 @@
 testDynamicalModel(modelODE, modelDx, modelDtheta, modelName, x, theta, tvec)
 }
 \arguments{
-\item{modelODE}{function that computes the ODEs, specified with the form \eqn{f(theta, x, t)}. See examples.}
+\item{modelODE}{function that computes the ODEs, specified with the form \code{f(theta, x, tvec)}. See examples.}
 
 \item{modelDx}{function that computes the gradients of the ODEs with respect to the system components. See examples.}
 
