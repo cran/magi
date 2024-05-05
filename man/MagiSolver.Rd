@@ -94,5 +94,8 @@ plot(FNres, comp.names = c("V", "R"), xlab = "Time", ylab = "Level")}
 
 }
 \references{
-Shihao Yang, Samuel WK Wong, SC Kou (2021). Inference of Dynamic Systems from Noisy and Sparse Data via Manifold-constrained Gaussian Processes.  \emph{Proceedings of the National Academy of Sciences}, 118 (15), e2020397118.
+Wong, S. W. K., Yang, S., & Kou, S. C. (2024). `magi`: A Package for Inference of Dynamic Systems from Noisy and Sparse Data via Manifold-Constrained Gaussian Processes. *Journal of Statistical Software*, 109 (4), 1-47. \doi{10.18637/jss.v109.i04}
+
+Yang, S., Wong, S. W. K., & Kou, S. C. (2021). Inference of Dynamic Systems from Noisy and 
+Sparse Data via Manifold-constrained Gaussian Processes. *Proceedings of the National Academy of Sciences*, 118 (15), e2020397118. \doi{10.1073/pnas.2020397118}
 }
