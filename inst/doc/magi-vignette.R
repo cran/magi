@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -81,11 +81,11 @@ fnmodel <- list(
 ## -----------------------------------------------------------------------------
 yobs <- data.frame(time = tvec, V = V, R = R)  
 
-## ---- results="hide"----------------------------------------------------------
+## ----results="hide"-----------------------------------------------------------
 yinput <- setDiscretization(yobs, level = 1)
 result <- MagiSolver(yinput, fnmodel, control = list(niterHmc = 2000, nstepsHmc = 100))
 
-## ---- fig.align = "center", fig.width=6, fig.asp=1----------------------------
+## ----fig.align = "center", fig.width=6, fig.asp=1-----------------------------
 oldpar <- par(mfrow = c(2, 2), mar = c(5, 2, 1, 1))
 theta.names <- c("a", "b", "c")
 for (i in 1:3) {
@@ -96,10 +96,10 @@ plot(result$lp, main = "log-post", type = "l", ylab="")
 ## -----------------------------------------------------------------------------
 summary(result, par.names = theta.names)
 
-## ---- fig.align = "center", fig.width=7, fig.asp=0.45-------------------------
+## ----fig.align = "center", fig.width=7, fig.asp=0.45--------------------------
 plot(result, comp.names = c("V", "R"), xlab = "Time", ylab = "Level")
 
-## ---- results="hide"----------------------------------------------------------
+## ----results="hide"-----------------------------------------------------------
 yinput2 <- setDiscretization(yobs, level = 2)
 result2 <- MagiSolver(yinput, fnmodel, control = list(niterHmc = 2000, nstepsHmc = 100))
 
@@ -148,7 +148,7 @@ y$H <- NaN
 y$P[y$time %in% seq(7.5, 240, by = 15)] <- NaN
 y$M[y$time %in% seq(0, 240, by = 15)] <- NaN
 
-## ---- fig.align = "center", fig.width=6, fig.asp=1----------------------------
+## ----fig.align = "center", fig.width=6, fig.asp=1-----------------------------
 compnames <- c("P", "M", "H")
 matplot(x[, "time"], x[, -1], type = "l", lty = 1, 
         xlab = "Time (min)", ylab = "Level")
@@ -219,11 +219,11 @@ hes1logmodel <- list(
   thetaUpperBound = rep(Inf, 7)
 )
 
-## ---- results='hide'----------------------------------------------------------
+## ----results='hide'-----------------------------------------------------------
 hes1result <- MagiSolver(y, hes1logmodel, 
                          control = list(sigma = param.true$sigma, useFixedSigma = TRUE))
 
-## ---- fig.align = "center", fig.width=7.2, fig.asp=0.5------------------------
+## ----fig.align = "center", fig.width=7.2, fig.asp=0.5-------------------------
 par(mfrow = c(2, 4), mar = c(5, 2, 1, 1))
 theta.names <- c("a", "b", "c", "d", "e", "f", "g")
 for (i in 1:7) {
@@ -234,7 +234,7 @@ plot(hes1result$lp, main = "log-post", type = "l", ylab = "")
 ## -----------------------------------------------------------------------------
 summary(hes1result, par.names = theta.names)
 
-## ---- fig.align = "center", fig.width=7.2, fig.asp=0.4------------------------
+## ----fig.align = "center", fig.width=7.2, fig.asp=0.4-------------------------
 xLB <- exp(apply(hes1result$xsampled, c(2,3), function(x) quantile(x, 0.025)))
 xMean <- exp(apply(hes1result$xsampled, c(2,3), mean))
 xUB <- exp(apply(hes1result$xsampled, c(2,3), function(x) quantile(x, 0.975)))
@@ -348,7 +348,7 @@ for(j in 1:(ncol(y) - 1)){
   y[, 1+j] <- y[, 1+j] + rnorm(nrow(y), sd = param.true$sigma[j])
 }
 
-## ---- fig.align = "center", fig.width=6, fig.asp=0.45-------------------------
+## ----fig.align = "center", fig.width=6, fig.asp=0.45--------------------------
 compnames <- c("TU", "TI", "V")
 complabels <- c("Concentration", "Concentration", "Load")
 par(mfrow = c(1, 3), mar = c(4, 4, 1.5, 1))
@@ -387,7 +387,7 @@ colnames(phiEst) <- compnames
 phiEst
 sigmaInit
 
-## ---- results="hide"----------------------------------------------------------
+## ----results="hide"-----------------------------------------------------------
 phiEst[, 3] <- c(1e7, 0.5)
 sigmaInit[3] <- 100
 HIVresult <- MagiSolver(y_I, hivtdmodel,
@@ -396,7 +396,7 @@ HIVresult <- MagiSolver(y_I, hivtdmodel,
 ## -----------------------------------------------------------------------------
 summary(HIVresult, par.names = c("lambda", "rho", "delta", "N", "c"))
 
-## ---- fig.align = "center", fig.width=7, fig.asp=0.45-------------------------
+## ----fig.align = "center", fig.width=7, fig.asp=0.45--------------------------
 par(mfrow = c(1, 3), mar = c(4, 3, 1.5, 1))
 compnames <- c("TU", "TI", "V")
 ylim_lower <- c(100, 0, 0)

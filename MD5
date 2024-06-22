@@ -1,4 +1,4 @@
-64334063c6f89d06738d34c792c1e535 *DESCRIPTION
+17a5e41eaa6b20bd84f0bf5609732ecb *DESCRIPTION
 8b93b4a07012232fa7df518d147fc319 *LICENSE
 c8f07d3ed34b50d8aa69b6676684acb6 *NAMESPACE
 94397663817f13900770f116fa6776e5 *R/RcppExports.R
@@ -17,13 +17,13 @@ d8dd28904a4a156fb2bda865aabfe5c6 *R/magi-package.R
 57bfc9f19b1c07307fd3ba61f15f471a *R/wrapper.R
 d170ae0b712cef6fa2bec0d274ca3d13 *R/zzz.R
 68bd0d07d5ed94a71d0f15be916cd3e5 *README.md
-8faf250d78a120ba4c7ea2186efddd24 *build/partial.rdb
-eb521a16b91510a03beaf77de21f8587 *build/vignette.rds
+f61db891eb928123aba4412ca322f508 *build/partial.rdb
+81e1d878b4b036c40d1472a549cfd80c *build/vignette.rds
 7a94d4cff4de2d2ebc72afcbb028c8b3 *data/FNdat.rda
 ee2e7f62ec62358c90d6504d01c99de2 *inst/CITATION
-1fcb298b824f044dbea850546051c0c9 *inst/doc/magi-vignette.R
+e80d5a420e4d492c4cc63af8173b5576 *inst/doc/magi-vignette.R
 e266eba717c8b7baeaac5526c4e96381 *inst/doc/magi-vignette.Rmd
-4199932de15e7acaa164b70d0ada95a8 *inst/doc/magi-vignette.html
+6451ea636778ec3af104ce7dcf9bb2bf *inst/doc/magi-vignette.html
 8e4f3b1c41f927568d581e8f5bcdd807 *inst/include/magi.h
 d2f467d8f5bea3a4ad2cbe390ac76d4a *inst/testdata/FN.csv
 8a49f1130a740ddb5d38d94531a28c3c *inst/testdata/data_band.txt
@@ -94,7 +94,7 @@ be392f29d4172c6e3569973d4cf73d17 *tests/testthat/test_bessel.R
 6baf002092b0004eef94b71baeba98b0 *tests/testthat/test_optimizePhi.R
 4b45c56ecb4e2e13afb95debea24e05e *tests/testthat/test_phillikwithxdotx.R
 8610d5620b23f5e16d24a6e8db97b379 *tests/testthat/test_phisigllikC.R
-6ef202bca34ffe6680d5633ba32dfd75 *tests/testthat/test_rcppTranslation.R
+aa9c0dcc32098ffe4693a7551ac57e4c *tests/testthat/test_rcppTranslation.R
 9e4a24b65f90fdd8dd7c25c6a7d2f3f5 *tests/testthat/test_xthesamplerNA.R
 ce81476c7fe8094eea73a5bb235bebfe *tests/testthat/test_xthetaphillik.R
 7958612bfe72ebaab63bd4cd6ef946b6 *tests/testthat/test_xthetasigmallik.R
